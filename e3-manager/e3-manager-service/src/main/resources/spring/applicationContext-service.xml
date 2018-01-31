@@ -3,11 +3,14 @@
 	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" 
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 	http://www.springframework.org/schema/util 
-	http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+	http://www.springframework.org/schema/util/spring-util-4.2.xsd
+	http://code.alibabatech.com/schema/dubbo 
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 	<!-- 数据池连接 包的扫描全部交给子容器进行扫描 -->
 	<!-- 加载配置文件 -->
 	<context:component-scan base-package="cn.e3.service"></context:component-scan>
@@ -37,5 +40,7 @@
 	<aop:config>
 		<aop:advisor advice-ref="txAdvice" pointcut="execution(* cn.e3mall.service.*.*(..))"/>
 	</aop:config>
-
+	
+	
+	
 </beans>
