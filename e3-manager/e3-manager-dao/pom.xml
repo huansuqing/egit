@@ -39,6 +39,7 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 		</dependency>
+		<!-- 编译配置 -->
 	</dependencies>
 		<build>
 		<resources>

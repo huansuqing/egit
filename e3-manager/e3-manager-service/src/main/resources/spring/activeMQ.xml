@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+	<!--  ZHENGHE-->
+	<!-- 真正的jms厂商提供的connectionFactroy 连接工厂一般都是单利的-->
+	<bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<!-- 提供一个构造方法的参数 -->
+		<constructor-arg name="brokerURL" value="tcp://192.168.85.141:61616"></constructor-arg>
+	</bean>
+	
+	<!-- spring 管理的connectionFactory -->
+	<bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+		<!-- 引用上面的bean对象 -->
+		<property name="targetConnectionFactory" ref="targetConnectionFactory"></property>
+	</bean>
+	<!-- 配置生产者 -->
+	<!-- Spring提供的JMS工具类，它可以进行消息发送、接收等 -->
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->
+		<property name="connectionFactory" ref="connectionFactory"></property>
+	</bean>
+	<!--这个是队列目的地，点对点的 -->
+	<bean id="test-queue" class="org.apache.activemq.command.ActiveMQQueue">
+		<!--  创建该对象需要有构造参数 要为则个消息对列生成一个名字 -->
+		<constructor-arg>
+			<value>test-queue</value>
+		</constructor-arg>
+	</bean>
+	
+	<!-- 一对多的目的地 -->
+	<bean id="itemAddTopic" class="org.apache.activemq.command.ActiveMQTopic">
+		<constructor-arg value="item-add-topic"></constructor-arg>
+	</bean>
+	
+</beans>

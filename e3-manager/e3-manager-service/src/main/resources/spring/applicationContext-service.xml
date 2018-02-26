@@ -38,7 +38,7 @@
 	
 	<!-- 配置切面 -->
 	<aop:config>
-		<aop:advisor advice-ref="txAdvice" pointcut="execution(* cn.e3mall.service.*.*(..))"/>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* cn.e3.service.*.*(..))"/>
 	</aop:config>
 	
 	
