@@ -3,18 +3,18 @@ package com.e3.utils;
 import java.io.Serializable;
 import java.util.List;
 
-public class PageResult implements Serializable{
+public class PageResult implements Serializable {
 
-	//总条数
-	private Integer total;
-	
+	// 总条数
+	private Long total;
+
 	private List<?> rows;
 
-	public Integer getTotal() {
+	public Long getTotal() {
 		return total;
 	}
 
-	public void setTotal(Integer total) {
+	public void setTotal(Long total) {
 		this.total = total;
 	}
 
@@ -25,5 +25,5 @@ public class PageResult implements Serializable{
 	public void setRows(List<?> rows) {
 		this.rows = rows;
 	}
-	
+
 }
