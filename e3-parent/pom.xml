@@ -31,6 +31,7 @@
 		<dubbo.version>2.5.3</dubbo.version>
 		<zookeeper.version>3.4.7</zookeeper.version>
 		<zkclient.version>0.1</zkclient.version>
+		<!-- 没有jar包冲突的问题 -->
 		<activemq.version>5.11.2</activemq.version>
 		<freemarker.version>2.3.23</freemarker.version>
 		<quartz.version>2.2.2</quartz.version>
@@ -261,4 +262,11 @@
 		</pluginManagement>
 	</build>
   
+	<dependencies>
+		<dependency>
+			<groupId>fastdfs_client</groupId>
+			<artifactId>fastdfs_client</artifactId>
+			<version>1.25</version>
+		</dependency>
+	</dependencies>
 </project>
