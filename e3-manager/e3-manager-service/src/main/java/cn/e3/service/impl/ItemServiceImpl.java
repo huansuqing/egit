@@ -153,7 +153,7 @@ public class ItemServiceImpl implements ItemService {
 
 			@Override
 			public Message createMessage(Session session) throws JMSException {
-				// 创建一个textMessage对象 发送id给消息队列中---注意需要的是字符串 此时的id是需要final修饰的
+				// 创建一个textMessage对象 发送id给消息队列中---注意需要的是字符串 此时的id是需要final修饰的  
 				TextMessage textMessage = session.createTextMessage(itemId + "");
 				return textMessage;
 			}
